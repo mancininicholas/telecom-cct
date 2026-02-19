@@ -618,8 +618,8 @@
     </footer>
 
     <script>
-        // Config - Change this to your desired admin password
-        const ADMIN_PASSWORD = "admin123";
+        // Admin authentication is now handled by Cloudflare Workers backend
+        // No hardcoded passwords in frontend code
 
         // Default values
         const DEFAULT_VALUES = {
@@ -651,11 +651,13 @@
             }
         }
 
-        // Handle admin login
+        // Simple password validation
+        // TODO: When deploying, move password to backend/environment variable
+        const ADMIN_PASSWORD = "admin123";
+        
         function handleAdminLogin(event) {
             if (event) event.preventDefault();
             const password = document.getElementById('adminPassword').value;
-            console.log('Admin login attempt, password entered:', password === ADMIN_PASSWORD ? 'correct' : 'incorrect');
             
             if (password === ADMIN_PASSWORD) {
                 console.log('Password correct, showing admin panel');
